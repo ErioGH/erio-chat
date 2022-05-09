@@ -24,5 +24,5 @@ mvn clean install
 ### RUN APPLICATION
 
 ```zsh
-java -jar ./task-manager.jar
+java -jar ./erio-chat.jar
 ```
