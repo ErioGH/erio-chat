@@ -15,7 +15,8 @@ public class App {
                 System.out.print("Insert you login: ");
                 login = bufferedReader.readLine();
             }
-            System.out.println("Hello " + login);
+            System.out.println("Hello " + login + ".");
+            System.out.println("For private massages add @<username to> before message body.");
             Chat chat = new Chat(login);
             chat.init();
             while (true) {
