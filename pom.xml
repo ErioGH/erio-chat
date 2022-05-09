@@ -41,8 +41,8 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-kahadb-store</artifactId>
-            <version>5.17.1</version>
-            <scope>test</scope>
+            <version>5.17.0</version>
+<!--            <scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -81,7 +81,7 @@
     </dependencies>
 
     <build>
-        <finalName>task-manager-server</finalName>
+        <finalName>erio-chat</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException, JMSException {
+    public static void main(String[] args) throws Exception {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("---Welcome to JMS Chat---");
             String login = "";

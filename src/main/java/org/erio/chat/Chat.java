@@ -3,6 +3,7 @@ package org.erio.chat;
 import lombok.Getter;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerService;
 import org.jetbrains.annotations.NotNull;
 
 import javax.jms.*;
@@ -39,7 +40,11 @@ public class Chat {
         this.login = login;
     }
 
-    public void init() throws JMSException {
+    public void init() throws Exception {
+        final BrokerService broker = new BrokerService();
+        broker.addConnector("tcp://localhost:61616");
+        broker.start();
+
         factory = new ActiveMQConnectionFactory(URL);
         factory.setTrustAllPackages(true);
         connection = factory.createConnection();
