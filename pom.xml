@@ -7,10 +7,15 @@
     <groupId>org.erio</groupId>
     <artifactId>erio-chat</artifactId>
     <version>0.1.0</version>
-    <packaging>pom</packaging>
 
     <name>Erio Chat</name>
     <url>https://github.com/ErioGH/erio-chat</url>
+
+    <scm>
+        <connection>scm:git:http://none</connection>
+        <developerConnection>scm:git:https://none</developerConnection>
+        <url>scm:git:http://none</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -74,5 +79,72 @@
             <version>23.0.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>task-manager-server</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>org.erio.chat.Application</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                            <buildNumber>${buildNumber}</buildNumber>
+                            <developer>Sergey Bagrintsev</developer>
+                            <email>sbagrintsev@t1-consulting.ru</email>
+                            <timestamp>${timestamp}</timestamp>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <!--<arg>-Xlint:unchecked,-options,-path</arg>-->
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>true</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <revisionOnScmFailure>true</revisionOnScmFailure>
+                    <format>${project.version}.{0,number}</format>
+                    <items>
+                        <item>buildNumber</item>
+                        <item>timestamp</item>
+                    </items>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
